@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import './App.css'
 
 class App extends Component {
@@ -11,9 +13,16 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {this.props.user}
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+  }
+}
+
+export default connect(mapStateToProps)(App)
